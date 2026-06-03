@@ -177,6 +177,84 @@ body {
   -webkit-backdrop-filter: blur(12px);
 }
 
+.typewriter-heading {
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  animation: typewriter-reveal 2.5s steps(22, end) 180ms both;
+}
+
+.typewriter-heading::after {
+  content: "";
+  position: absolute;
+  top: 0.08em;
+  bottom: 0.05em;
+  left: 0;
+  width: 0.055em;
+  background: currentColor;
+  animation:
+    typewriter-cursor-move 2.5s steps(22, end) 180ms both,
+    typewriter-caret 760ms step-end 180ms infinite;
+}
+
+@keyframes typewriter-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes typewriter-cursor-move {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typewriter-caret {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: currentColor;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-heading {
+    clip-path: none;
+    border-right: 0;
+    animation: none;
+  }
+
+  .typewriter-heading::after {
+    content: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .typewriter-heading {
+    clip-path: none;
+    white-space: normal;
+    border-right: 0;
+    animation: none;
+  }
+
+  .typewriter-heading::after {
+    content: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .glass {
     background:

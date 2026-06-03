@@ -55,7 +55,7 @@ export default function Home() {
                   {site.role} · {site.location}
                 </div>
                 <h1 className="font-serif text-5xl font-normal leading-[1.05] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl">
-                  Hi, I’m {site.name}.
+                  <span className="typewriter-heading">Hi, I’m {site.name}.</span>
                 </h1>
                 <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
                   {site.tagline}
