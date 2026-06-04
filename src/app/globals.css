@@ -222,11 +222,11 @@ body {
 @keyframes typewriter-caret {
   0%,
   100% {
-    border-color: transparent;
+    opacity: 0;
   }
 
   50% {
-    border-color: currentColor;
+    opacity: 1;
   }
 }
 

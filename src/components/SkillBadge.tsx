@@ -92,6 +92,40 @@ const icons: Record<string, ReactNode> = {
       />
     </svg>
   ),
+  python: (
+    <svg viewBox="0 0 24 24" className="size-[17px] shrink-0" aria-hidden="true">
+      <path
+        d="M11.8 2.5c-3 0-4.2.8-4.2 2.1v2.2h4.5v.7H5.9c-1.3 0-2.5.8-2.9 2.4-.5 1.8-.5 2.9 0 4.8.4 1.4 1.3 2.4 2.6 2.4h1.7v-2.3c0-1.5 1.3-2.9 2.9-2.9h4.9c1.2 0 2.2-1 2.2-2.2V4.6c0-1.2-1-2-2.2-2.2-.8-.1-1.8-.1-3.3.1Zm-2.4 1.4c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9Z"
+        fill="#3776AB"
+      />
+      <path
+        d="M12.2 21.5c3 0 4.2-.8 4.2-2.1v-2.2h-4.5v-.7h6.2c1.3 0 2.5-.8 2.9-2.4.5-1.8.5-2.9 0-4.8-.4-1.4-1.3-2.4-2.6-2.4h-1.7v2.3c0 1.5-1.3 2.9-2.9 2.9H8.9c-1.2 0-2.2 1-2.2 2.2v5.1c0 1.2 1 2 2.2 2.2.8.1 1.8.1 3.3-.1Zm2.4-1.4c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9Z"
+        fill="#FFD43B"
+      />
+    </svg>
+  ),
+  supabase: (
+    <svg viewBox="0 0 24 24" className="size-[16px] shrink-0" aria-hidden="true">
+      <path
+        d="M13.6 2.7 4.9 13.6c-.6.8 0 1.9 1 1.9h4.5l-.8 5.2c-.2 1.2 1.3 1.8 2.1.8l8.7-11c.6-.8 0-1.9-1-1.9h-4.5l.8-5.1c.2-1.3-1.3-1.9-2.1-.8Z"
+        fill="#3ECF8E"
+      />
+      <path
+        d="M13.6 2.7 4.9 13.6c-.6.8 0 1.9 1 1.9h4.5l3.2-12.8Z"
+        fill="#3ECF8E"
+        opacity=".6"
+      />
+    </svg>
+  ),
+  fastapi: (
+    <svg viewBox="0 0 24 24" className="size-[17px] shrink-0" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5" fill="#009688" />
+      <path
+        d="m13.3 4.9-6 8.3h4.1l-1.1 5.9 6.4-8.7h-4.2l.8-5.5Z"
+        fill="#ffffff"
+      />
+    </svg>
+  ),
   git: (
     <svg viewBox="0 0 24 24" className="size-[14px] shrink-0" aria-hidden="true">
       <path

@@ -14,6 +14,7 @@ export type Experience = {
   period: string;
   location: string;
   url?: string;
+  work?: string[];
 };
 
 export const site: {
@@ -50,6 +51,10 @@ export const site: {
       period: "Jan 2025 – May 2025",
       location: "India",
       url: "https://www.linkedin.com/company/ikionesystems/",
+      work: [
+        "Built a notes classification system using CNNs to automatically categorize content across an existing bank notes marketplace.",
+        "Developed an automated workflow that converts financial documents and reports into interactive video reports, streamlining data presentation for end users.",
+      ],
     },
   ],
   skills: [

@@ -1,4 +1,5 @@
 import { GitHubContributions } from "@/components/GitHubContributions";
+import { ExperienceDetails } from "@/components/ExperienceDetails";
 import { FloatingNav } from "@/components/FloatingNav";
 import { SkillBadge, TechTag } from "@/components/SkillBadge";
 import { Container, IconLink, Section } from "@/components/ui";
@@ -117,7 +118,7 @@ export default function Home() {
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex flex-wrap items-center gap-2.5">
                         <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                           {exp.url ? (
                             <a
@@ -132,6 +133,12 @@ export default function Home() {
                             exp.company
                           )}
                         </h3>
+                        {exp.work?.length ? (
+                          <ExperienceDetails
+                            company={exp.company}
+                            work={exp.work}
+                          />
+                        ) : null}
                       </div>
                       <div className="mt-0.5 text-sm text-zinc-600 dark:text-zinc-400">
                         {exp.role}
