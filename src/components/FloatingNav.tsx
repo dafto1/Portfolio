@@ -11,9 +11,15 @@ function cx(...classes: Array<string | false | null | undefined>) {
 export function FloatingNav({ items }: { items: Item[] }) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "intro");
   const [activeRect, setActiveRect] = useState<{ left: number; width: number } | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
+    const activeTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    setTheme(activeTheme);
+
     const handleScroll = () => {
       // Check if scrolled to the absolute bottom of the page
       const isAtBottom =
@@ -63,8 +69,20 @@ export function FloatingNav({ items }: { items: Item[] }) {
     return () => window.removeEventListener("resize", updateRect);
   }, [activeId]);
 
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+  };
+
   return (
-    <header className="nav-bar fixed inset-x-0 top-0 z-50 h-14 border-b border-white/[0.06]">
+    <header className="nav-bar fixed inset-x-0 top-0 z-50 h-14 border-b border-zinc-200/50 dark:border-white/[0.06]">
       <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-5 sm:px-8">
         {/* Name on the left */}
         <a
@@ -107,8 +125,52 @@ export function FloatingNav({ items }: { items: Item[] }) {
           })}
         </nav>
 
-        {/* Spacer to balance the layout */}
-        <div className="w-[110px] hidden sm:block" aria-hidden="true" />
+        {/* Theme toggle on the right */}
+        <div className="flex w-[110px] justify-end">
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              className="pointer-events-auto flex size-8.5 items-center justify-center rounded-full border border-zinc-200 bg-white/40 text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-white/10 dark:bg-zinc-800/10 dark:text-zinc-400 dark:hover:border-white/20 dark:hover:text-zinc-100"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                // Sun Icon (shows in dark mode to switch to light)
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4.5 w-4.5"
+                >
+                  <circle cx="12" cy="12" r="5" />
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+              ) : (
+                // Moon Icon (shows in light mode to switch to dark)
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4.5 w-4.5"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                </svg>
+              )}
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

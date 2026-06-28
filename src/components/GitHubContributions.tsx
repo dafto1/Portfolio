@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
 function subscribe() {
@@ -20,11 +20,32 @@ export function GitHubContributions({
 }: {
   username: string;
 }) {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
   const mounted = useSyncExternalStore(
     subscribe,
     getClientSnapshot,
     getServerSnapshot
   );
+
+  useEffect(() => {
+    // Check initial state
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+
+    // Watch for theme toggler class changes
+    const observer = new MutationObserver(() => {
+      const isDarkNow = document.documentElement.classList.contains("dark");
+      setTheme(isDarkNow ? "dark" : "light");
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="glass rounded-xl p-4 shadow-sm">
@@ -49,7 +70,7 @@ export function GitHubContributions({
             blockSize={12}
             blockMargin={4}
             fontSize={12}
-            colorScheme="dark"
+            colorScheme={theme}
             theme={{
               light: [
                 "#ebedf0",
@@ -74,4 +95,3 @@ export function GitHubContributions({
     </div>
   );
 }
-
