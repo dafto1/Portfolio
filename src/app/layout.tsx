@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -49,7 +51,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[color:var(--background)] text-[color:var(--foreground)] transition-colors duration-200">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
