@@ -42,6 +42,7 @@ export default function Home() {
           { id: "skills", label: "Skills", href: "#skills" },
           { id: "experience", label: "Experience", href: "#experience" },
           { id: "projects", label: "Projects", href: "#projects" },
+          { id: "blog", label: "Blog", href: "/blog" },
           { id: "github", label: "GitHub", href: "#github" },
         ]}
       />

@@ -1,0 +1,39 @@
+---
+title: "Building reliable AI agents"
+description: "A practical note on designing AI agents that are useful, inspectable, and easy to improve."
+date: "2026-08-20"
+category: "AI"
+tags:
+  - AI
+  - Agents
+  - Engineering
+featured: true
+cover: "/blog/blog-header.png"
+coverAlt: "A stylized landscape with riders crossing an open field."
+---
+
+The most useful AI agents are not the ones with the longest prompts. They are the ones with a clear job, a small set of dependable tools, and enough visibility to explain what happened.
+
+## Start with a narrow job
+
+An agent should begin with a specific responsibility. Instead of asking it to “research anything,” give it a focused outcome, a small context window, and a definition of done.
+
+That makes failures easier to understand and gives the system a useful boundary. When the boundary is clear, the prompt, tools, and evaluation criteria become much simpler.
+
+## Make the work inspectable
+
+Every meaningful step should leave a trace: the input, the selected tool, the result, and the reason for the next action. This is useful while developing the agent and even more useful when a user reports that an answer feels wrong.
+
+```ts
+type AgentStep = {
+  tool: string;
+  input: unknown;
+  output: unknown;
+};
+```
+
+## Improve the loop, not just the prompt
+
+When an agent produces a weak answer, the fix is not always a longer instruction. Sometimes the tool response needs better structure, the context needs trimming, or the agent needs one more verification step.
+
+Good agent design is an iterative engineering practice: observe, measure, change one thing, and run the same task again.
