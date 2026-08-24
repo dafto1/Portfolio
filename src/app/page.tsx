@@ -145,7 +145,7 @@ export default function Home() {
                         {exp.role}
                       </div>
                     </div>
-                    <div className="mt-1 shrink-0 text-right sm:mt-0">
+                    <div className="mt-1 shrink-0 text-left sm:mt-0 sm:text-right">
                       <div className="text-sm text-zinc-500">
                         {exp.period}
                       </div>

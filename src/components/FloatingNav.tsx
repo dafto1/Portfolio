@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type Item = { id: string; label: string; href: string };
 
@@ -13,6 +13,7 @@ export function FloatingNav({ items }: { items: Item[] }) {
   const [activeRect, setActiveRect] = useState<{ left: number; width: number } | null>(null);
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,7 +49,12 @@ export function FloatingNav({ items }: { items: Item[] }) {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // initial call
-    return () => window.removeEventListener("scroll", handleScroll);
+    const closeMenu = () => setMenuOpen(false);
+    window.addEventListener("resize", closeMenu);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", closeMenu);
+    };
   }, [items]);
 
   useEffect(() => {
@@ -83,7 +89,7 @@ export function FloatingNav({ items }: { items: Item[] }) {
 
   return (
     <header className="nav-bar fixed inset-x-0 top-0 z-50 h-14 border-b border-zinc-200/50 dark:border-white/[0.06]">
-      <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-8">
         {/* Name on the left */}
         <a
           href="#intro"
@@ -93,7 +99,7 @@ export function FloatingNav({ items }: { items: Item[] }) {
         </a>
 
         {/* Nav links in the center */}
-        <nav ref={navRef} className="relative flex items-center gap-1">
+        <nav ref={navRef} className="nav-links relative flex items-center gap-1">
           {/* Sliding highlight indicator */}
           {activeRect && (
             <span
@@ -113,7 +119,7 @@ export function FloatingNav({ items }: { items: Item[] }) {
                 key={item.id}
                 href={item.href}
                 className={cx(
-                  "relative rounded-full px-3.5 py-1.5 text-[17px] font-serif transition-colors duration-300",
+                  "relative rounded-full px-3 py-1.5 text-[17px] font-serif transition-colors duration-300 xl:px-3.5",
                   isActive
                     ? "text-zinc-900 dark:text-zinc-100"
                     : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200",
@@ -126,7 +132,7 @@ export function FloatingNav({ items }: { items: Item[] }) {
         </nav>
 
         {/* Theme toggle on the right */}
-        <div className="flex w-[110px] justify-end">
+        <div className="flex items-center justify-end gap-2 sm:w-[110px]">
           {mounted && (
             <button
               onClick={toggleTheme}
@@ -170,8 +176,40 @@ export function FloatingNav({ items }: { items: Item[] }) {
               )}
             </button>
           )}
+          <button
+            type="button"
+            className="nav-menu-button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </div>
+
+      <nav
+        className={`nav-mobile-menu ${menuOpen ? "is-open" : ""}`}
+        aria-label="Mobile navigation"
+        style={{
+          opacity: menuOpen ? 1 : 0,
+          pointerEvents: menuOpen ? "auto" : "none",
+          transform: menuOpen ? "translateY(0)" : "translateY(-8px)",
+        }}
+      >
+        {items.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            className={item.id === activeId ? "is-active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
