@@ -5,6 +5,7 @@ import { getAllPosts } from "@/lib/blog";
 export const metadata = {
   title: "Blog — Shreyas Nikam",
   description: "Engineering notes, experiments, and things I am learning.",
+  robots: { index: false, follow: false },
 };
 
 export default function BlogPage() {
