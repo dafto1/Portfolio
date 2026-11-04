@@ -1,5 +1,6 @@
 import { GitHubContributions } from "@/components/GitHubContributions";
 import Image from "next/image";
+import bannerImage from "../../assets/1130469.png";
 import { ExperienceDetails } from "@/components/ExperienceDetails";
 import { FloatingNav } from "@/components/FloatingNav";
 import { SkillBadge, TechTag } from "@/components/SkillBadge";
@@ -50,13 +51,28 @@ export default function Home() {
       <main>
         <Container>
           <div className="h-20" aria-hidden="true" />
-          <section id="intro" className="screen-line-bottom py-12 sm:py-16">
-            <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
+          <section id="intro" className="screen-line-bottom pb-12 sm:pb-16">
+            <div className="relative -mx-4 overflow-hidden border-y border-[color:var(--line)] sm:-mx-8">
+              <Image
+                src={bannerImage}
+                alt="Pixel-art meadow beside a lake"
+                width={3840}
+                height={2160}
+                priority
+                className="h-48 w-full object-cover object-center sm:h-64"
+              />
+              <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 border border-white/25 bg-black/65 px-3 py-1.5 font-mono text-[11px] text-white">
+                <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                AVAILABLE FOR WORK
+              </div>
+            </div>
+
+            <div className="flex flex-col-reverse gap-8 pt-10 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
               <div className="max-w-2xl flex-1">
                 <div className="mb-4 font-mono text-xs tracking-wide text-[color:var(--muted-foreground)]">
                   {site.role} · {site.location}
                 </div>
-                <h1 className="text-5xl font-medium leading-none tracking-tight sm:text-6xl">
+                <h1 className="font-serif text-5xl font-normal leading-none tracking-tight sm:text-6xl">
                   <span className="typewriter-heading">Hi, I’m {site.name}.</span>
                 </h1>
                 <p className="mt-5 text-lg leading-8 text-[color:var(--muted-foreground)]">
@@ -94,7 +110,7 @@ export default function Home() {
                   alt={site.name}
                   width={128}
                   height={128}
-                  className="size-24 rounded-full border border-[color:var(--border)] object-cover grayscale sm:size-32"
+                  className="size-24 rounded-full border border-[color:var(--border)] object-cover sm:size-32"
                 />
               </div>
             </div>
