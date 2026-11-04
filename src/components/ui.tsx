@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export function Container({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-3xl border-x border-[color:var(--line)] px-4 sm:px-8">{children}</div>
+    <div className="mx-auto w-full max-w-4xl px-5 sm:border-x sm:border-[color:var(--line)] sm:px-8 lg:px-10">{children}</div>
   );
 }
 
@@ -41,14 +41,14 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="screen-line-bottom scroll-mt-20 py-10 sm:py-12">
+    <section id={id} className="screen-line-bottom scroll-mt-20 py-11 sm:py-14">
       <div className="mb-6">
         {eyebrow ? (
           <div className="mb-2 font-mono text-xs tracking-wide text-[color:var(--muted-foreground)]">
             {eyebrow}
           </div>
         ) : null}
-        <h2 className="text-3xl font-medium tracking-tight text-[color:var(--foreground)]">
+        <h2 className="text-[2rem] font-medium tracking-tight text-[color:var(--foreground)] sm:text-3xl">
           {title}
         </h2>
       </div>

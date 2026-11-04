@@ -51,28 +51,28 @@ export default function Home() {
       <main>
         <Container>
           <div className="h-20" aria-hidden="true" />
-          <section id="intro" className="screen-line-bottom pb-12 sm:pb-16">
-            <div className="relative -mx-4 overflow-hidden border-y border-[color:var(--line)] sm:-mx-8">
+          <section id="intro" className="screen-line-bottom pb-11 sm:pb-16">
+            <div className="relative -mx-5 overflow-hidden border-y border-[color:var(--line)] sm:-mx-8">
               <Image
                 src={bannerImage}
                 alt="Pixel-art meadow beside a lake"
                 width={3840}
                 height={2160}
                 priority
-                className="h-48 w-full object-cover object-center sm:h-64"
+                className="h-52 w-full object-cover object-center sm:h-64"
               />
-              <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 border border-white/25 bg-black/65 px-3 py-1.5 font-mono text-[11px] text-white">
+              <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 border border-white/25 bg-black/65 px-2.5 py-1.5 font-mono text-[10px] text-white sm:px-3 sm:text-[11px]">
                 <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
                 AVAILABLE FOR WORK
               </div>
             </div>
 
-            <div className="flex flex-col-reverse gap-8 pt-10 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
+            <div className="flex flex-col-reverse gap-7 pt-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12 sm:pt-10">
               <div className="max-w-2xl flex-1">
                 <div className="mb-4 font-mono text-xs tracking-wide text-[color:var(--muted-foreground)]">
                   {site.role} · {site.location}
                 </div>
-                <h1 className="font-serif text-5xl font-normal leading-none tracking-tight sm:text-6xl">
+                <h1 className="font-serif text-[2.75rem] font-normal leading-[.95] tracking-tight sm:text-6xl">
                   <span className="typewriter-heading">Hi, I’m {site.name}.</span>
                 </h1>
                 <p className="mt-5 text-lg leading-8 text-[color:var(--muted-foreground)]">
@@ -116,7 +116,7 @@ export default function Home() {
             </div>
           </section>
 
-          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
+          <div className="stripe-divider -mx-5 sm:-mx-8" aria-hidden="true" />
 
           <Section id="skills" title="Skills" eyebrow="// toolbox">
             <div className="flex flex-wrap gap-2">
@@ -126,7 +126,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
+          <div className="stripe-divider -mx-5 sm:-mx-8" aria-hidden="true" />
 
           <Section id="experience" title="Experience" eyebrow="// career">
             <div className="flex flex-col gap-0">
@@ -177,7 +177,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
+          <div className="stripe-divider -mx-5 sm:-mx-8" aria-hidden="true" />
 
           <Section id="projects" title="Projects" eyebrow="// selected work">
             <div className="space-y-3">
@@ -251,7 +251,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
+          <div className="stripe-divider -mx-5 sm:-mx-8" aria-hidden="true" />
 
           <Section id="github" title="GitHub" eyebrow="// contributions">
             <GitHubContributions username={site.githubUsername} />
