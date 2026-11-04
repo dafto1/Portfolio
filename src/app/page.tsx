@@ -1,4 +1,5 @@
 import { GitHubContributions } from "@/components/GitHubContributions";
+import Image from "next/image";
 import { ExperienceDetails } from "@/components/ExperienceDetails";
 import { FloatingNav } from "@/components/FloatingNav";
 import { SkillBadge, TechTag } from "@/components/SkillBadge";
@@ -48,23 +49,23 @@ export default function Home() {
 
       <main>
         <Container>
-          <div className="h-14 sm:h-16" aria-hidden="true" />
-          <section id="intro" className="py-14 sm:py-20">
+          <div className="h-20" aria-hidden="true" />
+          <section id="intro" className="screen-line-bottom py-12 sm:py-16">
             <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
               <div className="max-w-2xl flex-1">
-                <div className="mb-4 font-mono text-xs tracking-wide text-zinc-500">
+                <div className="mb-4 font-mono text-xs tracking-wide text-[color:var(--muted-foreground)]">
                   {site.role} · {site.location}
                 </div>
-                <h1 className="font-serif text-5xl font-normal leading-[1.05] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl">
+                <h1 className="text-5xl font-medium leading-none tracking-tight sm:text-6xl">
                   <span className="typewriter-heading">Hi, I’m {site.name}.</span>
                 </h1>
-                <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                <p className="mt-5 text-lg leading-8 text-[color:var(--muted-foreground)]">
                   {site.tagline}
                 </p>
 
-                <div className="mt-6 max-w-xl space-y-3 text-[15px] leading-7 text-zinc-600 dark:text-zinc-400">
+                <div className="mt-6 max-w-xl space-y-3 text-[15px] leading-7 text-[color:var(--muted-foreground)]">
                   <p>{site.about}</p>
-                  <p className="text-zinc-500 dark:text-zinc-500">
+                  <p className="font-mono text-xs tracking-wide text-[color:var(--muted-foreground)]">
                     Currently focused on shipping small, polished projects and improving fundamentals.
                   </p>
                 </div>
@@ -88,16 +89,18 @@ export default function Home() {
                 </div>
               </div>
               <div className="shrink-0 self-center sm:self-start">
-                <img
+                <Image
                   src="/profile.png"
                   alt={site.name}
-                  className="size-24 rounded-full border border-zinc-200/80 object-cover shadow-sm dark:border-white/10 sm:size-32"
+                  width={128}
+                  height={128}
+                  className="size-24 rounded-full border border-[color:var(--border)] object-cover grayscale sm:size-32"
                 />
               </div>
             </div>
           </section>
 
-          <div className="h-px w-full bg-zinc-200/80 dark:bg-white/10" />
+          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
 
           <Section id="skills" title="Skills" eyebrow="// toolbox">
             <div className="flex flex-wrap gap-2">
@@ -107,7 +110,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="h-px w-full bg-zinc-200/80 dark:bg-white/10" />
+          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
 
           <Section id="experience" title="Experience" eyebrow="// career">
             <div className="flex flex-col gap-0">
@@ -140,15 +143,15 @@ export default function Home() {
                           />
                         ) : null}
                       </div>
-                      <div className="mt-0.5 text-sm text-zinc-600 dark:text-zinc-400">
+                      <div className="mt-0.5 text-sm text-[color:var(--muted-foreground)]">
                         {exp.role}
                       </div>
                     </div>
                     <div className="mt-1 shrink-0 text-left sm:mt-0 sm:text-right">
-                      <div className="text-sm text-zinc-500">
+                      <div className="font-mono text-xs text-[color:var(--muted-foreground)]">
                         {exp.period}
                       </div>
-                      <div className="text-xs text-zinc-500">
+                      <div className="font-mono text-xs text-[color:var(--muted-foreground)]">
                         {exp.location}
                       </div>
                     </div>
@@ -158,14 +161,14 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="h-px w-full bg-zinc-200/80 dark:bg-white/10" />
+          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
 
           <Section id="projects" title="Projects" eyebrow="// selected work">
             <div className="space-y-3">
               {site.projects.map((p) => (
                 <div
                   key={p.title}
-                  className="glass relative rounded-xl p-5 shadow-sm transition-colors hover:border-zinc-300 dark:hover:border-white/20"
+                  className="relative border border-[color:var(--border)] p-5 transition-colors hover:bg-[color:var(--muted)]"
                 >
                   {p.links?.github ? (
                     <a
@@ -178,10 +181,10 @@ export default function Home() {
                   ) : null}
                   <div className="pointer-events-none relative z-10 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
-                      <div className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+                      <div className="text-base font-medium tracking-tight">
                         {p.title}
                       </div>
-                      <div className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                      <div className="mt-1 text-sm leading-6 text-[color:var(--muted-foreground)]">
                         {renderDescription(p.description)}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -232,13 +235,13 @@ export default function Home() {
             </div>
           </Section>
 
-          <div className="h-px w-full bg-zinc-200/80 dark:bg-white/10" />
+          <div className="stripe-divider -mx-4 sm:-mx-8" aria-hidden="true" />
 
           <Section id="github" title="GitHub" eyebrow="// contributions">
             <GitHubContributions username={site.githubUsername} />
           </Section>
 
-          <footer className="py-10 text-sm text-zinc-500">
+          <footer className="py-10 font-mono text-xs text-[color:var(--muted-foreground)]">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
               <div className="flex flex-wrap gap-4">

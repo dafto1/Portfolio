@@ -31,7 +31,7 @@ export function GitHubContributions({
   useEffect(() => {
     // Check initial state
     const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    queueMicrotask(() => setTheme(isDark ? "dark" : "light"));
 
     // Watch for theme toggler class changes
     const observer = new MutationObserver(() => {

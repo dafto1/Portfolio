@@ -17,9 +17,9 @@ export function FloatingNav({ items }: { items: Item[] }) {
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
     const activeTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-    setTheme(activeTheme);
+    queueMicrotask(() => setTheme(activeTheme));
 
     const handleScroll = () => {
       // Check if scrolled to the absolute bottom of the page
