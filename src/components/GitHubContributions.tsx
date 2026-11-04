@@ -31,7 +31,7 @@ export function GitHubContributions({
   useEffect(() => {
     // Check initial state
     const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    queueMicrotask(() => setTheme(isDark ? "dark" : "light"));
 
     // Watch for theme toggler class changes
     const observer = new MutationObserver(() => {
@@ -62,7 +62,7 @@ export function GitHubContributions({
           @{username}
         </a>
       </div>
-      <div className="github-scroll overflow-x-auto">
+      <div className="github-scroll">
         {mounted ? (
           <GitHubCalendar
             username={username}
@@ -89,7 +89,7 @@ export function GitHubContributions({
             }}
           />
         ) : (
-          <div className="h-[146px] min-w-[768px]" aria-hidden="true" />
+          <div className="h-[146px] w-full" aria-hidden="true" />
         )}
       </div>
     </div>

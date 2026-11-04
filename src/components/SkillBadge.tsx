@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 function BadgeShell({ children }: { children: ReactNode }) {
   return (
-    <div className="glass-subtle inline-flex items-center gap-2.5 rounded-full px-3.5 py-1.5 text-sm font-medium text-zinc-800 shadow-xs dark:text-zinc-100">
+    <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-1.5 font-mono text-xs text-[color:var(--muted-foreground)] transition-colors hover:bg-[color:var(--muted)] hover:text-[color:var(--foreground)]">
       {children}
     </div>
   );
@@ -19,7 +19,7 @@ function FallbackIcon({ label }: { label: string }) {
     .join("");
 
   return (
-    <span className="inline-flex size-5 items-center justify-center rounded-full bg-zinc-900/10 font-mono text-[9px] font-bold text-zinc-700 dark:bg-white/10 dark:text-zinc-200">
+    <span className="inline-flex size-5 items-center justify-center rounded-full bg-[color:var(--muted)] font-mono text-[9px] font-bold text-[color:var(--muted-foreground)]">
       {letters || "•"}
     </span>
   );
@@ -168,7 +168,7 @@ export function TechTag({ label }: { label: string }) {
   const icon = icons[key];
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200/80 bg-white/40 px-2 py-0.5 text-[11px] font-medium text-zinc-700 shadow-xs dark:border-white/10 dark:bg-zinc-800/30 dark:text-zinc-300 backdrop-blur-xs">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--border)] px-2 py-0.5 font-mono text-[11px] text-[color:var(--muted-foreground)]">
       <span className="inline-flex size-4 items-center justify-center shrink-0 *:scale-80">
         {icon ?? <FallbackIcon label={label} />}
       </span>
