@@ -24,8 +24,8 @@ The site is a personal developer portfolio: quiet, editorial, and approachable. 
 
 The homepage starts with a personal visual introduction:
 
-1. A wide, animated pixel-art landscape banner. Day artwork lives at `assets/day-banner.png`; night artwork lives at `assets/night-banner.png`.
-2. A small availability badge in the bottom-left of the banner and a live digital clock in the bottom-right.
+1. A wide pixel-art landscape banner, sourced from `assets/1130469.png`.
+2. A small availability badge in the bottom-right of the banner.
 3. The established introduction beneath it: role/location, “Hi, I’m Shreyas Nikam.”, short bio, social links, and the profile photo aligned at the right on desktop.
 
 The profile photo remains in full color. Do not introduce a duplicate overlapping name/profile card below the banner.
@@ -97,8 +97,8 @@ The mobile layout is a first-class layout, not a compressed desktop page.
 - Breakpoint for mobile navigation: `900px`.
 - Content-column frame becomes visible from `640px` upward only.
 - At `640px` and below, use `20px` horizontal page padding, no vertical column borders, smaller section dividers, and normal text wrapping.
-- The banner is full-bleed inside the mobile page shell and `14rem` tall; it becomes `18rem` at `sm` and above.
-- The availability label and clock stay inside the banner, with small text and safe insets.
+- The banner is full-bleed inside the mobile page shell and `13rem` tall; it becomes `16rem` at `sm` and above.
+- The availability label stays inside the banner, with small text and safe insets.
 - Do not use fixed or minimum widths for content. In particular, avoid `min-width` values on charts, SVGs, card grids, and loading placeholders.
 - Hide horizontal overflow only as a safeguard; fix overflow at its source.
 

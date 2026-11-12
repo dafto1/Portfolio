@@ -53,26 +53,3 @@ html, body { overflow-x: hidden; }
   .github-scroll { margin-inline: -4px; width: calc(100% + 8px); }
 }
 
-/* Pixel-art hero banner */
-.pixel-banner-media {
-  transition: opacity 700ms ease-out, transform 700ms cubic-bezier(0.32, 0.72, 0, 1);
-  will-change: transform, opacity;
-}
-
-@keyframes clock-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45); }
-  50% { opacity: 0.45; box-shadow: 0 0 0 3px rgba(52, 211, 153, 0); }
-}
-
-.clock-dot { animation: clock-pulse 2.2s ease-in-out infinite; }
-
-@media (hover: hover) and (pointer: fine) {
-  .pixel-banner:hover .pixel-banner-media { transform: scale(1.04); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pixel-banner-media { transition: opacity 200ms linear; }
-  .pixel-banner:hover .pixel-banner-media { transform: none; }
-  .clock-dot { animation: none; opacity: 0.9; box-shadow: none; }
-}
-
