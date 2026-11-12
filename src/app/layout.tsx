@@ -1,3 +1,4 @@
+import { websiteMetadata } from "./metadata";
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
@@ -20,10 +21,7 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
 });
 
-export const metadata: Metadata = {
-  title: "Shreyas Nikam",
-  description: "Minimal portfolio — introduction, skills, projects, GitHub.",
-};
+export const metadata: Metadata = websiteMetadata; 
 
 export default function RootLayout({
   children,
