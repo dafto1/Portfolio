@@ -1,8 +1,6 @@
 import { GitHubContributions } from "@/components/GitHubContributions";
 import Image from "next/image";
-import dayBannerImage from "../../assets/day-banner.png";
-import nightBannerImage from "../../assets/night-banner.png";
-import { PixelBanner } from "@/components/banner/PixelBanner";
+import bannerImage from "../../assets/1130469.png";
 import { ExperienceDetails } from "@/components/ExperienceDetails";
 import { FloatingNav } from "@/components/FloatingNav";
 import { SkillBadge, TechTag } from "@/components/SkillBadge";
@@ -66,14 +64,18 @@ export default function Home() {
           <div className="h-20" aria-hidden="true" />
           <section id="intro" className="screen-line-bottom pb-11 sm:pb-16">
             <div className="relative -mx-5 overflow-hidden border-y border-[color:var(--line)] sm:-mx-8">
-              <PixelBanner
-                dayImage={dayBannerImage}
-                nightImage={nightBannerImage}
-                alt="A seated samurai overlooking a Japanese valley with a pagoda, pines and a glowing flower field"
-                availability="AVAILABLE FOR WORK"
+              <Image
+                src={bannerImage}
+                alt="Pixel-art meadow beside a lake"
+                width={3840}
+                height={2160}
                 priority
-                className="h-56 sm:h-72"
+                className="h-52 w-full object-cover object-center sm:h-64"
               />
+              <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 border border-white/25 bg-black/65 px-2.5 py-1.5 font-mono text-[10px] text-white sm:px-3 sm:text-[11px]">
+                <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                AVAILABLE FOR WORK
+              </div>
             </div>
 
             <div className="flex flex-col-reverse gap-7 pt-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12 sm:pt-10">
