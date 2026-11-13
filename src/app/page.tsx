@@ -1,3 +1,4 @@
+import { BannerParticles } from "@/components/BannerParticles";
 import { GitHubContributions } from "@/components/GitHubContributions";
 import Image from "next/image";
 import bannerImage from "../../assets/1130469.png";
@@ -72,6 +73,7 @@ export default function Home() {
                 priority
                 className="h-52 w-full object-cover object-center sm:h-64"
               />
+              <BannerParticles />
               <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 border border-white/25 bg-black/65 px-2.5 py-1.5 font-mono text-[10px] text-white sm:px-3 sm:text-[11px]">
                 <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
                 AVAILABLE FOR WORK
